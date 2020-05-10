@@ -13,17 +13,26 @@
 char *read_line(FILE *fp) {
 
     int buflen = MINIMUM_SIZE;
-
-    if (ungetc(getc(fp), fp) == EOF) return NULL;
-    char *buffer = malloc(sizeof(char) * buflen );
     
-    if ( fgets(buffer, 4* buflen, fp) != NULL) {
-        buflen *= 4;
+    //    if (ungetc(getc(fp), fp) == EOF) return NULL;
+    char *buffer = malloc(sizeof(char) * buflen );
+    fgets(buffer, buflen, fp);
+    if (*buffer == EOF) {
+      free(buffer);
+      return NULL;
+    }
+    //    if (fgets(buffer, buflen, fp) == NULL) {
+    //  buffer[strchr(buffer, '\n') - buffer] = '\0';
+    //  return buffer;
+    // }
+    
+    //if ( fgets(buffer, 4* buflen, fp) != NULL) {
+    //        buflen *= 4;
 	/*
 	char *p = realloc(buffer, sizeof(char) * buflen);
 	assert(p != NULL);
 	buffer = p;*/
-     }
+    //     }
     // write assert!!
     buffer[strchr(buffer, '\n') - buffer] = '\0';
     return buffer;
