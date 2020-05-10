@@ -20,7 +20,7 @@ char *read_line(FILE *fp) {
     }
 
     while (fgets(buffer, buflen, fp)) {
-      printf("%s", buffer);
+      //      printf("%s", buffer);
       buffer = realloc(buffer, sizeof(char)* buflen*2);
       if (strchr(buffer, '\n') != NULL) break;
       buflen *= 2;
