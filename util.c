@@ -15,14 +15,14 @@ char *read_line(FILE *fp) {
     
     char *buffer = malloc(sizeof(char) * buflen );
     if (fgets(buffer, buflen, fp) == NULL) {
-      printf("%s", buffer);
+
       return NULL;
     }
     printf("%s", buffer);
-    while (fgets(buffer + buflen, buflen, fp)) {
+    while ((strchr(buffer, '\n') == NULL)) {
       //      printf("%s", buffer);
       buffer = realloc(buffer, sizeof(char)* buflen*2);
-      if (strchr(buffer, '\n') != NULL) break;
+      fgets(buffer + buflen, buflen, fp);
       buflen *= 2;
     }
 
