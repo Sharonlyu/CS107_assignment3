@@ -19,9 +19,11 @@ char *read_line(FILE *fp) {
     if (fgets(buffer, buflen, fp) == NULL) {
       return NULL;
     }
+    if (strchr(buffer, '\n') != NULL) {
+      buffer = realloc(buffer, sizeof(char) * buflen * 2);
+      fgets(buffer + buflen, buflen, fp);
+    }
 
-    buffer = realloc(buffer, sizeof(char) * buflen * 4);
-    fgets(buffer + buflen, buflen*3 , fp);
       //      return NULL;
     // }
     // if (*buffer == EOF) {
