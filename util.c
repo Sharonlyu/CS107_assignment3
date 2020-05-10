@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
+#include <stdbool.h>
 /* initial allocation will be for min size, if not big enough, doubles
  * to 64, then 128, then 256, etc. as needed to accommodate the entire line
  * resize-as-you-go, doubling each time.
@@ -15,14 +16,13 @@ char *read_line(FILE *fp) {
     
     char *buffer = malloc(sizeof(char) * buflen );
     if (fgets(buffer, buflen, fp) == NULL) {
-
       return NULL;
     }
     printf("%s", buffer);
-    while ((strchr(buffer, '\n') == NULL)) {
+    while (true) {
       //      printf("%s", buffer);
       buffer = realloc(buffer, sizeof(char)* buflen*2);
-      fgets(buffer + buflen, buflen, fp);
+      if (!fgets(buffer + buflen, buflen, fp)) break;
       buflen *= 2;
     }
 
