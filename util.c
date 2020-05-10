@@ -23,7 +23,7 @@ char *read_line(FILE *fp) {
       buffer = realloc(buffer, sizeof(char) * buflen*2);
       char new[buflen];
       if (fgets(new, buflen , fp) == NULL) {
-	strncpy(buffer, new, buflen);
+	strncpy(buffer + buflen, new, buflen);
 	return buffer;
       }
       strncpy(buffer, new, buflen);
