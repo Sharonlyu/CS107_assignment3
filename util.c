@@ -30,6 +30,8 @@ char *read_line(FILE *fp) {
 	return buffer;
       }
       strncpy(buffer + buflen, new, buflen);
+      printf("%s", buffer);
+      
       buflen *= 2;
     }
 
