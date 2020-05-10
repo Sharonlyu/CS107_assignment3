@@ -20,19 +20,11 @@ char *read_line(FILE *fp) {
       printf("%s", buffer);   
     }
 
-    char a;
-    if (fgets(&a, 1, fp) != NULL) {
+    while ((fgets(buffer, buflen, fp)) || strchr(buffer, '\n') != NULL) {
       //      printf("%s", buffer);
-      buffer = realloc(buffer, sizeof(char)* buflen*2);
-      buffer[buflen] = a; 
-    }
-
-    // while () {
-      //      printf("%s", buffer);
-    //  buffer = realloc(buffer, sizeof(char)* buflen*2);
-    //  if (!fgets(buffer + buflen, buflen, fp)) break;
-    //  buflen *= 2;
-    // }
+       buffer = realloc(buffer, sizeof(char)* buflen*2);
+       buflen *= 2;
+     }
 
     buffer[strchr(buffer, '\n') - buffer] = '\0';
 
