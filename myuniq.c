@@ -57,7 +57,7 @@ void print_uniq_lines(FILE *fp)
 
     /* if the new line is different from current line */
     if(match == 1) {
-      printf("%d %s\n", count, currentLine);
+      printf("%7d %s\n", count, currentLine);
       memcpy(currentLine, newLine, strlen(newLine) + 1);
 
       count = 1;
