@@ -26,7 +26,7 @@ char *read_line(FILE *fp) {
 	strncpy(buffer + buflen, new, buflen);
 	return buffer;
       }
-      strncpy(buffer, new, buflen);
+      strncpy(buffer + buflen, new, buflen);
       buflen *= 2;
     }
 
