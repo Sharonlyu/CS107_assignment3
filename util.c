@@ -13,18 +13,20 @@
 char *read_line(FILE *fp) {
 
     int buflen = MINIMUM_SIZE;
-
+    
     char *buffer = malloc(sizeof(char) * buflen );
     if (fgets(buffer, buflen, fp) == NULL) {
       return NULL;
     }
+    
     while (strchr(buffer, '\n') == NULL) {
       buffer = realloc(buffer, sizeof(char) * buflen*2);
-
-      if (fgets(buffer + buflen, buflen , fp) == NULL) {
+      char new[buflen];
+      if (fgets(new, buflen , fp) == NULL) {
 	printf("eehe");
 	return buffer;
       }
+      strncpy(buffer, new, buflen);
       buflen *= 2;
     }
 
