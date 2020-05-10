@@ -14,7 +14,7 @@ char *read_line(FILE *fp) {
     int buflen = MINIMUM_SIZE;
 
     if (ungetc(getc(fp), fp) == EOF) return NULL;
-    char *buffer = malloc(sizeof(char) * buflen);
+    char *buffer = malloc(sizeof(char) * buflen * 2);
     
     if ( fgets(buffer, 16* buflen, fp) != NULL) {
       //      buflen *= 4;
