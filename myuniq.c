@@ -10,6 +10,67 @@
  */
 #define ESTIMATE 100
 
+int compare(char *current, char *new, int *count){
+  if (strcmp(current, new) == 0) {
+
+    (*count)++;
+    return *count;
+  }
+  return 1;
+}
+
+
+/*
+ * Function: print_uniq_lines
+ * ----------------------------
+ *   Returns void, prints all unique lines using:
+ *
+ *          fp: user input file
+ *
+ *   returns: void
+ *            prints the count of the same lines followed by the line
+ */
+
+void print_uniq_lines(FILE *fp)
+{
+
+  char* line = read_line(fp);
+
+  /* requests a new memory of length of the next line read from fp*/
+  char* currentLine = malloc(strlen(line) + 1);
+
+  /*copies the line to allocated memory */
+  memcpy(currentLine, line, strlen(line) + 1);
+  free(line);
+
+  char* newLine = NULL;
+  int count = 1;
+
+  while ((newLine =read_line(fp))) {
+    int match = compare(currentLine, newLine, &count);
+
+    /* if current line matches the new line */
+    if (match > 1) {
+      free(newLine);
+      continue;
+    }
+
+    /* if the new line is different from current line */
+    if(match == 1) {
+      printf("%d %s\n", count, currentLine);
+      memcpy(currentLine, newLine, strlen(newLine) + 1);
+
+      count = 1;
+      free(newLine);
+    }
+  }
+
+  /* prints the count of the same lines followed by the line*/
+  printf("%d" "%s\n",count, currentLine);
+
+}
+
+/*
 void print_uniq_lines(FILE *fp) {
     // TODO: your implementation
   char* line = read_line(fp);
@@ -36,7 +97,7 @@ void print_uniq_lines(FILE *fp) {
 
   printf("%d" "%s\n",count, current);
 }
-
+*/
 
 // ------- DO NOT EDIT ANY CODE BELOW THIS LINE (but do add comments!)  -------
 
