@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <assert.h>
 /* initial allocation will be for min size, if not big enough, doubles
  * to 64, then 128, then 256, etc. as needed to accommodate the entire line
  * resize-as-you-go, doubling each time.
@@ -18,7 +19,9 @@ char *read_line(FILE *fp) {
     
     if ( fgets(buffer, 4* buflen, fp) != NULL) {
         buflen *= 4;
-        buffer = realloc(buffer, sizeof(char) * buflen);
+        char *p = realloc(buffer, sizeof(char) * buflen);
+	assert(p != NULL);
+	buffer = p;
      }
     // write assert!!
     buffer[strchr(buffer, '\n') - buffer] = '\0';
