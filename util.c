@@ -18,8 +18,8 @@ char *read_line(FILE *fp) {
     
     if ( fgets(buffer, buflen, fp) != NULL) {
       buflen *= 4;
-      buffer = realloc(buffer, sizeof(char) * buflen);
-    }
+      //      buffer = realloc(buffer, sizeof(char) * buflen);
+     }
     // write assert!!
     buffer[strchr(buffer, '\n') - buffer] = '\0';
     return buffer;
