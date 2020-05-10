@@ -28,5 +28,6 @@ char *read_line(FILE *fp) {
     }
 
     buffer[strchr(buffer, '\n') - buffer] = '\0';
+    printf("hi");
     return buffer;
 }
