@@ -24,6 +24,7 @@ char *read_line(FILE *fp) {
       if (fgets(new, buflen , fp) == NULL) {
 	//	strncpy(buffer + buflen, new, buflen);
 	printf("hi");
+	buffer[strlen(buffer) - 1] = '\0';
 	return buffer;
       }
       strncpy(buffer + buflen, new, buflen);
