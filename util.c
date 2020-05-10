@@ -15,7 +15,8 @@ char *read_line(FILE *fp) {
 
     if (ungetc(getc(fp), fp) == EOF) return NULL;
     char *buffer = malloc(sizeof(char) * buflen);
-    while ( fgets(buffer, buflen, fp) != NULL) {
+    
+    if ( fgets(buffer, buflen, fp) != NULL) {
       buflen *= 2;
       buffer = realloc(buffer, sizeof(char) * buflen);
     }
