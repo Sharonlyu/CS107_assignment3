@@ -17,6 +17,7 @@ char *read_line(FILE *fp) {
     char *buffer = malloc(sizeof(char) * buflen );
     if (fgets(buffer, buflen, fp) == NULL) {
       return NULL;
+      printf("%s", buffer);   
     }
     //    printf("%s", buffer);
     // while () {
