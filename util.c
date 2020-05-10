@@ -13,12 +13,10 @@ char *read_line(FILE *fp) {
 
     int buflen = MINIMUM_SIZE;
 
-    int ch = ungetc(getc(fp), fp);
-    if (ch == EOF) return NULL;
+    if (ungetc(getc(fp), fp) == EOF) return NULL;
     char *buffer = malloc(sizeof(char)*buflen);
-    fgets(buffer,4* buflen, fp);
+    fgets(buffer, 4* buflen, fp);
     char *s = strchr(buffer, '\n');
-    int i = s - buffer;
-    buffer[i] = '\0';
+    buffer[s - buffer] = '\0';
     return buffer;
 }
