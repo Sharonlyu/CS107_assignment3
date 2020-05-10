@@ -17,10 +17,10 @@ char *read_line(FILE *fp) {
     //    if (ungetc(getc(fp), fp) == EOF) return NULL;
     char *buffer = malloc(sizeof(char) * buflen );
     fgets(buffer, buflen, fp);
-    if (*buffer == EOF) {
-      free(buffer);
-      return NULL;
-    }
+    // if (*buffer == EOF) {
+    // free(buffer);
+    //  return NULL;
+    // }
     //    if (fgets(buffer, buflen, fp) == NULL) {
     //  buffer[strchr(buffer, '\n') - buffer] = '\0';
     //  return buffer;
