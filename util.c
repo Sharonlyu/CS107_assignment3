@@ -29,6 +29,7 @@ char *read_line(FILE *fp) {
 	 printf("HI");
 	 break;
        }
+       buffer = fgets(buffer, buflen * 2, fp); 
        printf("%s", buffer);
        buflen *= 2;
      }
