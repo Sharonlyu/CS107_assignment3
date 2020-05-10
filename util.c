@@ -19,9 +19,9 @@ char *read_line(FILE *fp) {
       return NULL;
     }
     while (strchr(buffer, '\n') == NULL) {
-      buffer = realloc(buffer, sizeof(char) * buflen * 2);
+      buffer = realloc(buffer, sizeof(char) * buflen);
       //      printf('%s',buffer);
-      if (fgets(buffer + buflen , buflen, fp + buflen) == NULL) {
+      if (fgets(buffer + buflen , buflen, fp) == NULL) {
 	break;
       }
       buflen *= 2;
