@@ -11,7 +11,6 @@
 
 
 char *read_line(FILE *fp) {
-
     int buflen = MINIMUM_SIZE;
     
     char *buffer = malloc(sizeof(char) * buflen );
@@ -24,6 +23,7 @@ char *read_line(FILE *fp) {
       char new[buflen];
       if (fgets(new, buflen , fp) == NULL) {
 	//	strncpy(buffer + buflen, new, buflen);
+	printf("hi");
 	return buffer;
       }
       strncpy(buffer + buflen, new, buflen);
