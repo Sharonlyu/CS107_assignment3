@@ -66,7 +66,7 @@ void print_uniq_lines(FILE *fp)
   }
 
   /* prints the count of the same lines followed by the line*/
-  printf("%7d" "%s\n",count, currentLine);
+  printf("%7d %s\n",count, currentLine);
 
 }
 
