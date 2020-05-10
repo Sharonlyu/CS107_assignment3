@@ -21,6 +21,7 @@ char *read_line(FILE *fp) {
     while (fgets(buffer, buflen, fp)) {
       buffer = realloc(buffer, sizeof(char)* buflen*2);
       if (strchr(buffer, '\n') != NULL) break;
+      buflen *= 2;
     }
 
     buffer[strchr(buffer, '\n') - buffer] = '\0';
