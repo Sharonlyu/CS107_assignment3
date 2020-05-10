@@ -2,6 +2,8 @@
 #include <errno.h>
 #include <error.h>
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 /* initial estimate of number of uniq lines
  * resize-as-you-go, add in increments of 100
@@ -10,6 +12,29 @@
 
 void print_uniq_lines(FILE *fp) {
     // TODO: your implementation
+  char* line = read_line(fp);
+  char* current = malloc(strlen(line) + 1);
+  
+  memcpy(current, line, strlen(line) + 1);
+  free(line);
+
+  char* newline = NULL;
+  int count = 1;
+
+  while ((newline = read_line(fp))) {
+    if (strcmp(current, newline) == 0) {
+      count++;
+      free(newline);
+      continue;
+    } else {
+      printf("%d %s\n", count, current);
+      memcpy(current, newline, strlen(newline) + 1);
+      count = 1;
+      free(newline);
+    }    
+  }
+
+  printf("%d" "%s\n",count, current);
 }
 
 
