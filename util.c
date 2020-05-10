@@ -14,9 +14,8 @@ char *read_line(FILE *fp) {
     int buflen = MINIMUM_SIZE;
 
     if (ungetc(getc(fp), fp) == EOF) return NULL;
-    char *buffer = malloc(sizeof(char)*buflen);
-    fgets(buffer, 4* buflen, fp);
-    //    char *s = strchr(buffer, '\n');
+    char *buffer = malloc(sizeof(char) * buflen);
+    fgets(buffer, 4 * buflen, fp);
     buffer[strchr(buffer, '\n') - buffer] = '\0';
     return buffer;
 }
