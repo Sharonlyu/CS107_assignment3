@@ -26,8 +26,7 @@ char *read_line(FILE *fp) {
       buffer = realloc(buffer, sizeof(char)* buflen*2);
       buffer[buflen] = a; 
     }
- 
-      printf("%s", buffer);
+
     // while () {
       //      printf("%s", buffer);
     //  buffer = realloc(buffer, sizeof(char)* buflen*2);
