@@ -17,22 +17,10 @@ char *read_line(FILE *fp) {
     if (fgets(buffer, buflen, fp) == NULL) {
       return NULL;
     }
-    
-    while (strchr(buffer, '\n') == NULL) {
-      buffer = realloc(buffer, sizeof(char) * buflen*2);
-      char new[buflen];
-      printf("%s",new);
-      if (fgets(new, buflen , fp) == NULL) {
-	//	strncpy(buffer + buflen, new, buflen);
-	printf("%s", buffer);
-	
-	buffer[strlen(buffer) - 1] = '\0';
-	return buffer;
-      }
-      strncpy(buffer + buflen, new, buflen);
-      printf("%s", buffer);
-      
-      buflen *= 2;
+
+    while (fgets(buffer, buflen, fp)) {
+      buffer = realloc(buffer, sizeof(char)* buflen*2);
+      if (strchr(buffer, '\n') != NULL) break;
     }
 
     buffer[strchr(buffer, '\n') - buffer] = '\0';
