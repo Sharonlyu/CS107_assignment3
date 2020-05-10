@@ -23,6 +23,9 @@ char *read_line(FILE *fp) {
       buffer = realloc(buffer, sizeof(char) * buflen * 2);
       fgets(buffer + buflen, buflen, fp);
     }
+    if (strchr(buffer, '\n') == NULL) {
+      return buffer;
+    }
 
       //      return NULL;
     // }
@@ -43,6 +46,6 @@ char *read_line(FILE *fp) {
 	buffer = p;*/
     //     }
     // write assert!!
-    buffer[strchr(buffer, '\n') - buffer] = '\0';
+    // buffer[strchr(buffer, '\n') - buffer] = '\0';
     return buffer;
 }
