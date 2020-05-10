@@ -20,8 +20,8 @@ char *read_line(FILE *fp) {
       return NULL;
     }
 
-    buffer = realloc(buffer, sizeof(char) * buflen * 4); 
-    fgets(buffer + buflen, buflen*3, fp);
+    buffer = realloc(buffer, sizeof(char) * buflen * 2); 
+    fgets(buffer + buflen, buflen, fp);
       //      return NULL;
     // }
     // if (*buffer == EOF) {
