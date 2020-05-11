@@ -27,7 +27,6 @@ char *read_line(FILE *fp) {
      
        /* try reading the next buflen character */
        char p[buflen];
-       //       fgets(p, buflen, fp);
 
        /* if failed, stop reading further */
        if (fgets(p, buflen, fp) == NULL) {
@@ -37,6 +36,7 @@ char *read_line(FILE *fp) {
 
        /* assert that the buffer is not null */
        assert(buffer);
+
        /* otherwise concatenate to the buffer string and continue reading */
        buffer = strncat(buffer, p, buflen);
 
@@ -44,7 +44,6 @@ char *read_line(FILE *fp) {
     }
 
     if (strchr(buffer, '\n') == NULL) {
-      //      buffer[strlen(buffer)- 1] = '\0';
       buffer = realloc(buffer, strlen(buffer) + 1);
       buffer[buflen] = '\0';
     } else {
