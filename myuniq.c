@@ -36,14 +36,16 @@ void print_uniq_lines(FILE *fp) {
     /* the current line matches the new line*/
     if (strcmp(currentLine, newLine) == 0) {
       count++;
+      free(newLine);
     } else {
       printf("%7d %s\n", count, currentLine);
       memcpy(currentLine, newLine, strlen(newLine) + 1);
 
       /*reset the count to 1 because this current line is the start again*/
       count = 1;
+      free(newLine);
     }
-    free(newLine);
+    //    free(newLine);
   }
 
 
