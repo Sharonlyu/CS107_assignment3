@@ -20,15 +20,10 @@ char *read_line(FILE *fp) {
     }
         
     while (strchr(buffer, '\n') == NULL) {
-      //                  printf("%s", buffer);
-
        char new[buflen];
-       //       printf("%d", buflen);
-       //       if (fgets(new, buflen, fp) == NULL) {
-	 //	 printf("%s", buffer);
-       //	 break;
-       // }
-       fgets(new, buflen, fp);
+
+       if (fgets(new, buflen, fp) == NULL) buffer[buflen - 1 ] = '\0';
+      
        buffer = realloc(buffer, sizeof(char)* buflen*2);
        //       char * p = buffer + buflen;
        for (int i = 0; i < buflen; i++) {
@@ -40,9 +35,7 @@ char *read_line(FILE *fp) {
        //       printf("%s", buffer);
        buflen *= 2;
      }
-    if (strchr(buffer, '\n') == NULL) {
-      buffer[buflen - 1] = '\0';
-    }
+
         buffer[strchr(buffer, '\n') - buffer] = '\0';
     //    printf("%s", buffer);
     return buffer;
