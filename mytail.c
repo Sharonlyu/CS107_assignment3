@@ -23,7 +23,7 @@ void sliding_window(FILE *fp, char **window, int n) {
   while ((newLine = read_line(fp))) {
     if (count == n) {
       start %= n;
-      free(window[start]);
+      free(window + start);
       window[start] = newLine;
       start++;
     } else {
@@ -42,7 +42,6 @@ void sliding_window(FILE *fp, char **window, int n) {
     printf("%s\n", window[i]);
     free(window[i]);
   }
-
 
   if(count > MAX_NUM_LINES) {
     free(window);
