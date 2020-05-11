@@ -24,12 +24,7 @@ char *read_line(FILE *fp) {
 
     /* while we haven't encountered the newline character */
     while (strchr(buffer, '\n') == NULL) {
-       
-       buffer = realloc(buffer, buflen * 2);
-
-       /* assert that the buffer is not null */
-       assert(buffer);
-
+     
        /* try reading the next buflen character */
        char p[buflen];
        fgets(p, buflen, fp);
@@ -37,6 +32,10 @@ char *read_line(FILE *fp) {
        /* if failed, stop reading further */
        if (p == NULL) break;
 
+       buffer = realloc(buffer, buflen * 2);
+
+       /* assert that the buffer is not null */
+       assert(buffer);
        /* otherwise concatenate to the buffer string and continue reading */
        buffer = strncat(buffer, p, buflen);
 
