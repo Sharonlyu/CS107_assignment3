@@ -31,20 +31,19 @@ void sliding_window(FILE *fp, char **window, int n) {
       count++;
     }
   }
-  //  start--;
 
   /* print lines */
   
   for (int i = start; i <= n - 1; i++) {
     printf("%s\n", window[i]);
+    free(window[i]);
   }
   for (int i = 0; i < start; i++) {
     printf("%s\n", window[i]);
-  }
-
-  for(int i = 0; i < n; i++){
     free(window[i]);
   }
+
+
   if(count > MAX_NUM_LINES) {
     free(window);
   }
