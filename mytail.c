@@ -13,32 +13,24 @@
 void print_slide(FILE *fp, char **window, int n)
 {
 
-  char *newLine;              /* new line that stores a line read from fp */
-  int count = 0;              /* count of lines read */
-  int start = 0;              /* starting index of N lines) */
+  char *newLine;     
+  int count = 0;     
+  int start = 0;
 
-
-  /* Read n lines fp file */
   while ((newLine = read_line(fp))) {
 
     if (count == n) {
-
       start %= n;
       free(window[start]);
       window[start] = newLine;
       start++;
-
     } else {
-
       window[count] = newLine;
       count++;
-
     }
-
   }
   start--;
 
-  /* print the last (n-(1+start)) and first (start+1) lines */
   for (int i = start + 1; i <= n - 1; i++) {
     printf("%s\n", window[i]);
   }
@@ -46,7 +38,6 @@ void print_slide(FILE *fp, char **window, int n)
     printf("%s\n", window[i]);
   }
 
-  /* free n_lines */
   for(int i = 0; i < n; i++){
     free(window[i]);
   }
