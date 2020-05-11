@@ -33,21 +33,23 @@ void print_uniq_lines(FILE *fp) {
   int count = 1;
 
   while ((newLine = read_line(fp))) {
-
+    /* the current line matches the new line*/
     if (strcmp(currentLine, newLine) == 0) {
       count++;
       free(newLine);
-      continue;
+      //     continue;
+      
     } else {
-
       printf("%7d %s\n", count, currentLine);
       memcpy(currentLine, newLine, strlen(newLine) + 1);
 
+      /*reset the count to 1 because this current line is the start again*/
       count = 1;
       free(newLine);
     }
   }
 
+  /*  print the number with width 7 */
   printf("%7d %s\n",count, currentLine);
 
 }

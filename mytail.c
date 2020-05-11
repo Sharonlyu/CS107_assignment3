@@ -59,14 +59,13 @@ void print_last_n(FILE *fp, int n) {
   char **window;
 
   if(n <= MAX_NUM_LINES){
-
     sliding_window(fp, lines, n);
   } else {
     window = (char **)malloc((n * sizeof(char *)));
 
     /* assert that window is not null */
     assert(window);
-    
+    /* this window will be freed later */
     sliding_window(fp, window, n);
   }
 }
