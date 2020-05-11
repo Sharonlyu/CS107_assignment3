@@ -7,3 +7,4 @@
 # Below are example custom tests, you can edit this file to change or add new tests.
 
 mycat samples/names
+mycat samples/colors_no_end_newline
