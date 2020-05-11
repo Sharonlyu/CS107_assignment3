@@ -60,30 +60,32 @@ void print_uniq_lines(FILE *fp) {
   free(line);
 
   char* newLine = NULL;
-  int count = 1;
+  //  int count = 1;
 
   while ((newLine = read_line(fp))) {
     /* the current line matches the new line*/
     //  if (strcmp(currentLine, newLine) == 0) {
     if (contains(&set, newLine, &uniq)) {
-      count++;
-      continue;
+      //      count++;
+      // continue;
       //free(newLine);
-    } else {
-      printf("%7d %s\n", count, currentLine);
-      memcpy(currentLine, newLine, strlen(newLine) + 1);
+      // } else {
+      // printf("%7d %s\n", count, currentLine);
+      // memcpy(currentLine, newLine, strlen(newLine) + 1);
 
       /*reset the count to 1 because this current line is the start again*/
-      count = 1;
+      // count = 1;
       //free(newLine);
     }
     //    free(newLine);
     }
-
+  for (int i = 0; i < uniq; i++) {
+    printf("%7d %s\n", (set + i * sizeof(struct st))->count, (set + i * sizeof(struct st))->name);
+  }
 
 
   /*  print the number with width 7 */
-  printf("%7d %s\n",count, currentLine);
+  //  printf("%7d %s\n",count, currentLine);
 }
 
 
