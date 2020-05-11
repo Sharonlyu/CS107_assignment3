@@ -20,7 +20,7 @@ char *read_line(FILE *fp) {
     }
 
     
-    while (strchr(buffer, '\n')) {
+    while (strchr(buffer, '\n') == NULL) {
        
        buffer = realloc(buffer, sizeof(char)* buflen*2);
        char*p = buffer + buflen;
