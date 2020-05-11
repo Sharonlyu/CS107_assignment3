@@ -34,6 +34,6 @@ char *read_line(FILE *fp) {
      }
     if (strchr(buffer, '\n') == NULL) buffer[strlen(buffer)- 1] = '\n';
         buffer[strchr(buffer, '\n') - buffer] = '\0';
-    //    printf("%s", buffer);
+
     return buffer;
 }
