@@ -27,13 +27,11 @@ char *read_line(FILE *fp) {
      
        /* try reading the next buflen character */
        char p[buflen];
-       fgets(p, buflen, fp);
+       //       fgets(p, buflen, fp);
 
        /* if failed, stop reading further */
-       if (p == NULL) {
-	 printf("hi");
-	 return buffer;
-	 //break;
+       if (fgets(p, buflen, fp) == NULL) {
+	 break;
        }
        buffer = realloc(buffer, buflen * 2);
 
