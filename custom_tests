@@ -11,3 +11,6 @@ mycat samples/colors_no_end_newline
 myuniq -c samples/colors
 mytail -3 samples/colors
 mytail -5 samples/colors_no_end_newline
+mytail -10 samples/dictionary
+myuniq samples/names
+myuniq samples/dictionary
