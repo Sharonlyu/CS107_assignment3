@@ -23,8 +23,9 @@ void sliding_window(FILE *fp, char **window, int n) {
   while ((newLine = read_line(fp))) {
     if (count == n) {
       start %= n;
-      free(window[start]);
-      window[start] = newLine;
+      char* b = window[start];
+      free(b);
+      b = newLine;
       start++;
     } else {
       window[count] = newLine;
@@ -33,6 +34,8 @@ void sliding_window(FILE *fp, char **window, int n) {
   }
   start--;
 
+  /* print lines */
+  
   for (int i = start + 1; i <= n - 1; i++) {
     printf("%s\n", window[i]);
   }
@@ -59,10 +62,14 @@ void print_last_n(FILE *fp, int n) {
   char **window;
 
   if(n <= MAX_NUM_LINES){
+
     sliding_window(fp, lines, n);
   } else {
     window = (char **)malloc((n * sizeof(char *)));
+
+    /* assert that window is not null */
     assert(window);
+    
     sliding_window(fp, window, n);
   }
 }
