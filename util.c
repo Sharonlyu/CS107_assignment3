@@ -19,13 +19,12 @@ char *read_line(FILE *fp) {
       return NULL;
     }
 
-
     while (strchr(buffer, '\n') == NULL) {
        
        buffer = realloc(buffer, sizeof(char)* buflen*2);
-       //       char*p = buffer + buflen;
+
        char p[buflen];
-       fgets(p, buflen, fp);
+       assert(fgets(p, buflen, fp) != NULL);
        if (p == NULL) break;
        buffer = strncat(buffer, p, buflen);
 
