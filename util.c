@@ -16,6 +16,7 @@ char *read_line(FILE *fp) {
     
     char *buffer = malloc(buflen );
     if (fgets(buffer, buflen, fp) == NULL) {
+      free(buffer);
       return NULL;
     }
 
@@ -32,7 +33,7 @@ char *read_line(FILE *fp) {
       
      }
     if (strchr(buffer, '\n') == NULL) buffer[strlen(buffer)- 1] = '\n';
-        buffer[strchr(buffer, '\n') - buffer] = '\0';
+    buffer[strchr(buffer, '\n') - buffer] = '\0';
 
     return buffer;
 }
