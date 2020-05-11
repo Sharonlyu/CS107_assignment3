@@ -30,7 +30,7 @@ char *read_line(FILE *fp) {
 	 break;
        }
        //       buffer = fgets(buffer, buflen * 2, fp); 
-       printf("%s", buffer);
+       //       printf("%s", buffer);
        buflen *= 2;
      }
 
