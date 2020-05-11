@@ -23,7 +23,10 @@ char *read_line(FILE *fp) {
     while (strchr(buffer, '\n') == NULL) {
        
        buffer = realloc(buffer, sizeof(char)* buflen*2);
-       fgets(buffer + buflen, buflen, fp); 
+       if (fgets(buffer + buflen, buflen, fp) == NULL) {
+	 printf("HI");
+	 //	 free(buffer + buflen);
+       }
        buflen *= 2;
 
      }
