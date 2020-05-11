@@ -32,6 +32,7 @@ void sliding_window(FILE *fp, char **window, int n) {
     }
   }
 
+  free(newLine);
   /* print lines and free memories after mallocs */
   
   for (int i = start; i <= n - 1; i++) {
