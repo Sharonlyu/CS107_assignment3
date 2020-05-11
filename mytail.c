@@ -10,11 +10,11 @@
 #define DEFAULT_NUM_LINES 10
 
 /*
- * Helper function: print_slide(FILE *fp, char **window, int n)
+ * Helper function: sliding_window(FILE *fp, char **window, int n)
  * -------------------------------------------------
  * returns nothing, but prints the last n lines   
  */
-void print_slide(FILE *fp, char **window, int n) {
+void sliding_window(FILE *fp, char **window, int n) {
 
   char *newLine;     
   int count = 0;     
@@ -59,11 +59,11 @@ void print_last_n(FILE *fp, int n) {
   char **window;
 
   if(n <= MAX_NUM_LINES){
-    print_slide(fp, lines, n);
+    sliding_window(fp, lines, n);
   }else{
     window = (char **)malloc((n * sizeof(char *)));
     assert(window != NULL);
-    print_slide(fp, window, n);
+    sliding_window(fp, window, n);
   }
 }
 
