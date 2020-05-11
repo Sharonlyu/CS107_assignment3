@@ -23,11 +23,9 @@ char *read_line(FILE *fp) {
     while (strchr(buffer, '\n') == NULL) {
        char new[buflen];
 
-       if (fgets(new, buflen, fp) == NULL) {
-	 buffer[buflen - 1 ] = '\0';
-	 printf("%s", buffer);
-	 return buffer;
-       }
+       fgets(new, buflen, fp);
+       if (new == NULL) break;
+
        buffer = realloc(buffer, sizeof(char)* buflen*2);
 
        for (int i = 0; i < buflen; i++) {
