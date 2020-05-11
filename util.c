@@ -24,7 +24,7 @@ char *read_line(FILE *fp) {
     while (strchr(buffer, '\n') == NULL) {
       //                  printf("%s", buffer);
        buffer = realloc(buffer, sizeof(char)* buflen*2);
-       printf("%lu", strlen(buffer));
+       //       printf("%lu", strlen(buffer));
        if (fgets(buffer, 2*buflen, fp) == NULL) {
 	 printf("%s", buffer);
 	 break;
