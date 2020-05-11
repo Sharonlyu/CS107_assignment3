@@ -23,13 +23,14 @@ char *read_line(FILE *fp) {
         
     while (strchr(buffer, '\n') == NULL) {
       //                  printf("%s", buffer);
-       buffer = realloc(buffer, sizeof(char)* buflen*2);
+
        //       printf("%lu", strlen(buffer));
        char new[buflen];
        if (fgets(new, buflen, fp) == NULL) {
 	 printf("%s", buffer);
 	 break;
        }
+       buffer = realloc(buffer, sizeof(char)* buflen*2);
        strncpy(buffer + buflen, new, buflen);
        //       buffer = fgets(buffer, buflen * 2, fp); 
        //       printf("%s", buffer);
