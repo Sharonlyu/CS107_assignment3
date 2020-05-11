@@ -32,11 +32,9 @@ char *read_line(FILE *fp) {
 
        for (int i = 0; i < buflen; i++) {
 	 buffer[i + buflen] = new[i];
-	 //	 if (new[i] == '\n') {
-	 // buffer[i + buflen] = '\0';
-
-	 //	   return buffer;
-	 // }
+	 	 if (new[i] == '\n') {
+		   break; //	   return buffer;
+	 }
        }
 
        buflen *= 2;
