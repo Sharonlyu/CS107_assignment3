@@ -26,10 +26,11 @@ char *read_line(FILE *fp) {
        char*p = buffer + buflen;
        p = fgets(p, buflen, fp);
        if (p == NULL) break;
+       printf("%s", buffer);
        buflen *= 2;
       
      }
-    if (strchr(buffer, '\n') == NULL) buffer[strlen(buffer)*2 - 1] = '\n';
+    if (strchr(buffer, '\n') == NULL) buffer[strlen(buffer)- 1] = '\n';
         buffer[strchr(buffer, '\n') - buffer] = '\0';
     //    printf("%s", buffer);
     return buffer;
