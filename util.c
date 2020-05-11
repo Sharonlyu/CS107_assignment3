@@ -28,6 +28,8 @@ char *read_line(FILE *fp) {
 	 buffer[buflen - 1] = '\n';
 	 break;
        }
+       if (strchr(new,  '\n') == NULL) { 
+	 
        buffer = realloc(buffer, sizeof(char)* buflen*2);
 
        for (int i = 0; i < buflen; i++) {
@@ -37,7 +39,8 @@ char *read_line(FILE *fp) {
 	 }
        }
 
-       buflen *= 2;
+       buflen *= 2;}
+       else { break;}
      }
 
         buffer[strchr(buffer, '\n') - buffer] = '\0';
