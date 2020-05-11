@@ -42,8 +42,10 @@ char *read_line(FILE *fp) {
        buflen *= 2;
     }
 
-    if (strchr(buffer, '\n') == NULL) buffer[strlen(buffer)- 1] = '\n';
-    buffer[strchr(buffer, '\n') - buffer] = '\0';
-
+    if (strchr(buffer, '\n') == NULL) {
+      buffer[strlen(buffer)- 1] = '\n';
+    } else {
+      buffer[strchr(buffer, '\n') - buffer] = '\0';
+    }
     return buffer;
 }
