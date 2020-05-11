@@ -25,7 +25,7 @@ char *read_line(FILE *fp) {
     /* while we haven't encountered the newline character */
     while (strchr(buffer, '\n') == NULL) {
      
-       /* try reading the next buflen character */
+       /* try reading the next buflen characters */
        char p[buflen];
 
        /* if failed, stop reading further */
