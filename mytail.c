@@ -9,16 +9,18 @@
 #define MAX_NUM_LINES 100000
 #define DEFAULT_NUM_LINES 10
 
-
-void print_slide(FILE *fp, char **window, int n)
-{
+/*
+ * Helper function: print_slide(FILE *fp, char **window, int n)
+ * -------------------------------------------------
+ * returns nothing, but prints the last n lines   
+ */
+void print_slide(FILE *fp, char **window, int n) {
 
   char *newLine;     
   int count = 0;     
   int start = 0;
 
   while ((newLine = read_line(fp))) {
-
     if (count == n) {
       start %= n;
       free(window[start]);
@@ -46,6 +48,11 @@ void print_slide(FILE *fp, char **window, int n)
   }
 }
 
+/*
+ * Function: print_last_n(FILE *fp, int n)
+ * --------------------------------------
+ * returns nothing, but prints the last n lines
+*/
 void print_last_n(FILE *fp, int n) {
     // TODO: your implementation
   char *lines[MAX_NUM_LINES];
@@ -62,6 +69,11 @@ void print_last_n(FILE *fp, int n) {
 
 // ------- DO NOT EDIT ANY CODE BELOW THIS LINE (but do add comments!)  -------
 
+/*
+ * Function: convert_arg(const char *str, int max)
+ *---------------------------------------------
+ * Returns the integer as int after converting from string
+ */
 int convert_arg(const char *str, int max) {
     char *end;
     long n = strtol(str, &end, 10);
@@ -73,6 +85,7 @@ int convert_arg(const char *str, int max) {
     }
     return n;
 }
+
 
 int main(int argc, char *argv[]) {
     int num_lines = DEFAULT_NUM_LINES;
