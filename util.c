@@ -20,29 +20,25 @@ char *read_line(FILE *fp) {
     }
 
 
-    bool b = false;
     while (strchr(buffer, '\n') == NULL) {
        char new[buflen];
 
        if (fgets(new, buflen, fp) == NULL) {
 	 buffer[buflen - 1 ] = '\0';
+	 printf("%s", buffer);
 	 return buffer;
        }
        buffer = realloc(buffer, sizeof(char)* buflen*2);
-       //       char * p = buffer + buflen;
+
        for (int i = 0; i < buflen; i++) {
 	 buffer[i + buflen] = new[i];
 	 if (new[i] == '\n') {
 	   buffer[i + buflen] = '\0';
-	   b = true;
+
 	   return buffer;
 	 }
        }
-       if (b) break;
-       //       printf("%s", buffer); 
-	 //       strncpy(p, new, buflen);
-       //       buffer = fgets(buffer, buflen * 2, fp); 
-       //       printf("%s", buffer);
+
        buflen *= 2;
      }
 
