@@ -23,9 +23,9 @@ void sliding_window(FILE *fp, char **window, int n) {
   while ((newLine = read_line(fp))) {
     if (count == n) {
       start %= n;
-      char* b = window[start];
-      free(b);
-      b = newLine;
+
+      free(window[start]);
+      window[start] = newLine;
       start++;
     } else {
       window[count] = newLine;
