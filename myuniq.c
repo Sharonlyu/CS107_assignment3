@@ -24,7 +24,7 @@ struct st {
 
 void contains(struct st** set, char* line, int* uniq) {
   for (int i = 0; i < *uniq; i++) {
-    struct st* st = *set + i;
+    struct st* st = *set + i*sizeof(struct st);
     if (strcmp(st->name, line) == 0) {
       st->count++;
       return;
