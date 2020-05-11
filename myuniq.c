@@ -33,14 +33,14 @@ void print_uniq_lines(FILE *fp) {
 
   while ((newLine =read_line(fp))) {
     //int match = compare(currentLine, newLine, &count);
-    int match = 0;
+    //    int match = 0;
     if (strcmp(currentLine, newLine) == 0) {
       count++;
-      match = count;
+      //match = count;
       free(newLine);
       continue;
     } else {
-      match = 1;
+      //      match = 1;
       printf("%7d %s\n", count, currentLine);
       memcpy(currentLine, newLine, strlen(newLine) + 1);
 
