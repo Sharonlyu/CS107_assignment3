@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
+#include <assert.h>
 /* initial estimate of number of uniq lines
  * resize-as-you-go, add in increments of 100
  */
@@ -24,6 +24,8 @@ void print_uniq_lines(FILE *fp) {
 
   char* currentLine = malloc(strlen(line) + 1);
 
+  assert(currentLine);
+  
   memcpy(currentLine, line, strlen(line) + 1);
   free(line);
 
