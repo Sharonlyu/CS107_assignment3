@@ -48,10 +48,10 @@ bool contains(struct st** set, char* line, int* uniq) {
 
 
 void print_uniq_lines(FILE *fp) {
-  //  struct st* set;
-  // set = malloc(100 * sizeof(struct st));
+  struct st* set;
+  set = malloc(100 * sizeof(struct st));
   char* line = read_line(fp);
-
+  int uniq = 0;
   char* currentLine = malloc(strlen(line) + 1);
 
   assert(currentLine);
@@ -64,8 +64,8 @@ void print_uniq_lines(FILE *fp) {
 
   while ((newLine = read_line(fp))) {
     /* the current line matches the new line*/
-    if (strcmp(currentLine, newLine) == 0) {
-    //      printf("HAHHHAHHA");
+    //  if (strcmp(currentLine, newLine) == 0) {
+    if (contains(&set, newLine, &uniq)) {
       count++;
       continue;
       //free(newLine);
