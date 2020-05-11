@@ -28,7 +28,7 @@ char *read_line(FILE *fp) {
        fgets(p, buflen, fp);
        if (p == NULL) break;
        buffer = strncat(buffer, p, buflen);
-       printf("%s", buffer);
+
        buflen *= 2;
       
      }
