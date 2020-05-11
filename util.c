@@ -13,7 +13,7 @@
 
 char *read_line(FILE *fp) {
     int buflen = MINIMUM_SIZE;
-    
+    /*
     char *buffer = malloc(sizeof(char) * buflen );
     if (fgets(buffer, buflen, fp) == NULL) {
       return NULL;
@@ -23,7 +23,7 @@ char *read_line(FILE *fp) {
     while (strchr(buffer, '\n') == NULL) {
        
        buffer = realloc(buffer, sizeof(char)* buflen*2);
-       char*p = buffer + buflen;
+       //       char*p = buffer + buflen;
        p = fgets(p, buflen, fp);
        if (p == NULL) break;
        printf("%s", buffer);
@@ -33,5 +33,24 @@ char *read_line(FILE *fp) {
     if (strchr(buffer, '\n') == NULL) buffer[strlen(buffer)- 1] = '\n';
         buffer[strchr(buffer, '\n') - buffer] = '\0';
     //    printf("%s", buffer);
+    return buffer;*/
+    char* buf = (char*) malloc(buflen*sizeof(char));
+    char* buffer = (char*) malloc(sizeof(1));
+    strncpy(buffer, "\0", 1);
+    if(buf == NULL) {
+      //      perror("Couldn't allocate memory for buf in dynamic_fgets\n");
+    }
+
+    do {
+      fgets(buf, buflen, fp);
+      buffer = realloc(buffer, strlen(buf)+strlen(buffer));
+      if(buffer == NULL) {
+	perror("Couldn't allocate memory for *rtr in dynamic_fgets\n");
+      }
+
+      buffer = strncat(buffer, buf, buflen);
+      buflen *= 2;
+    } while(buf[strlen(buf)-1] != '\n');
+
     return buffer;
 }
