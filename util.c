@@ -34,6 +34,7 @@ char *read_line(FILE *fp) {
        for (int i = 0; i < buflen; i++) {
 	 buffer[i + buflen] = new[i];
        }
+       printf("%s", buffer); 
 	 //       strncpy(p, new, buflen);
        //       buffer = fgets(buffer, buflen * 2, fp); 
        //       printf("%s", buffer);
