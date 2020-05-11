@@ -11,7 +11,6 @@
 #define ESTIMATE 100
 
 
-
 /*
  * Function - print_uniq_lines((FILE *fp)
  * -------------------------------------
@@ -31,7 +30,7 @@ void print_uniq_lines(FILE *fp) {
   char* newLine = NULL;
   int count = 1;
 
-  while ((newLine =read_line(fp))) {
+  while ((newLine = read_line(fp))) {
 
     if (strcmp(currentLine, newLine) == 0) {
       count++;
@@ -46,7 +45,6 @@ void print_uniq_lines(FILE *fp) {
       free(newLine);
     }
   }
-
 
   printf("%7d %s\n",count, currentLine);
 
