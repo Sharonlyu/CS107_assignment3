@@ -42,7 +42,7 @@ char *read_line(FILE *fp) {
     }
 
     do {
-      fgets(buf, buflen, fp);
+      fgets(buf, buflen/2, fp);
       buffer = realloc(buffer, 2* buflen);
       if(buffer == NULL) {
 	perror("Couldn't allocate memory for *rtr in dynamic_fgets\n");
