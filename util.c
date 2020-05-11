@@ -15,23 +15,34 @@ char *read_line(FILE *fp) {
     int buflen = MINIMUM_SIZE;
     
     char *buffer = malloc(buflen );
+
+    /* If fp contains nothing */
     if (fgets(buffer, buflen, fp) == NULL) {
       free(buffer);
       return NULL;
     }
 
+    /* while we haven't encountered the newline character */
     while (strchr(buffer, '\n') == NULL) {
        
        buffer = realloc(buffer, buflen * 2);
+
+       /* assert that the buffer is not null */
        assert(buffer);
+
+       /* try reading the next buflen character */
        char p[buflen];
        fgets(p, buflen, fp);
+
+       /* if failed, stop reading further */
        if (p == NULL) break;
+
+       /* otherwise concatenate to the buffer string and continue reading */
        buffer = strncat(buffer, p, buflen);
 
        buflen *= 2;
-      
-     }
+    }
+
     if (strchr(buffer, '\n') == NULL) buffer[strlen(buffer)- 1] = '\n';
     buffer[strchr(buffer, '\n') - buffer] = '\0';
 
