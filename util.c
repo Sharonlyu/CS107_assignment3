@@ -50,7 +50,7 @@ char *read_line(FILE *fp) {
 
       buffer = strncat(buffer, buf, buflen);
       buflen *= 2;
-    } while(buf[strlen(buf)-1] != '\n');
+    } while(strchr(buf, '\n') == NULL);
 
     return buffer;
 }
