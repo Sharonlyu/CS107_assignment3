@@ -31,6 +31,7 @@ char *read_line(FILE *fp) {
 
        /* if failed, stop reading further */
        if (p == NULL) {
+	 printf("hi");
 	 return buffer;
 	 //break;
        }
