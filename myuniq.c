@@ -5,11 +5,39 @@
 #include <string.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <stdbool.h>
 /* initial estimate of number of uniq lines
  * resize-as-you-go, add in increments of 100
  */
 #define ESTIMATE 100
 
+struct st {
+  char*  name;
+  int   count;
+};
+ 
+
+/* Function: contains(char** set, char *line)
+ * --------------------------------
+ * returns true if set contains line.
+ */
+
+bool contains(struct st** set, char* line, int* uniq) {
+  for (int i = 0; i < 100; i++) {
+    struct st* st = *set + i;
+    if (strcmp(st->name, line) == 0) {
+      return true;
+    }
+  }
+      //set = realloc(set, sizeof(set) + 100 * sizeof(struct st));
+  struct st* new = (struct st *) malloc(sizeof(struct st));
+  new->name = line;
+  new->count = 1;
+  (*uniq)++;
+  set[(*uniq) + 1] = new;
+  return false;
+    
+}
 
 /*
  * Function - print_uniq_lines((FILE *fp)
@@ -20,7 +48,8 @@
 
 
 void print_uniq_lines(FILE *fp) {
-
+  //  struct st* set;
+  // set = malloc(100 * sizeof(struct st));
   char* line = read_line(fp);
 
   char* currentLine = malloc(strlen(line) + 1);
