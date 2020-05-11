@@ -8,3 +8,4 @@
 
 mycat samples/names
 mycat samples/colors_no_end_newline
+myuniq -c samples/colors 
