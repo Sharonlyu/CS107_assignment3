@@ -24,10 +24,8 @@ char *read_line(FILE *fp) {
        
        buffer = realloc(buffer, sizeof(char)* buflen*2);
        char*p = buffer + buflen;
-       if (fgets(p, buflen, fp) == NULL) {
-	 printf("HI");
-	 //	 free(buffer + buflen);
-       }
+       p = fgets(p, buflen, fp);
+
        buflen *= 2;
 
      }
