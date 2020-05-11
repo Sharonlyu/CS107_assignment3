@@ -31,7 +31,8 @@ char *read_line(FILE *fp) {
 	 break;
        }
        buffer = realloc(buffer, sizeof(char)* buflen*2);
-       strncpy(buffer + buflen, new, buflen);
+       char * p = buffer + buflen;
+       strncpy(p, new, buflen);
        //       buffer = fgets(buffer, buflen * 2, fp); 
        //       printf("%s", buffer);
        buflen *= 2;
