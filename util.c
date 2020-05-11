@@ -25,10 +25,12 @@ char *read_line(FILE *fp) {
       //                  printf("%s", buffer);
        buffer = realloc(buffer, sizeof(char)* buflen*2);
        //       printf("%lu", strlen(buffer));
-       if (fgets(buffer + buflen, buflen, fp) == NULL) {
+       char new[buflen];
+       if (fgets(new, buflen, fp) == NULL) {
 	 printf("%s", buffer);
 	 break;
        }
+       strncpy(buffer + buflen, new, buflen);
        //       buffer = fgets(buffer, buflen * 2, fp); 
        //       printf("%s", buffer);
        buflen *= 2;
