@@ -18,7 +18,9 @@ char *read_line(FILE *fp) {
     if (fgets(buffer, buflen, fp) == NULL) {
       return NULL;
     }
-        
+
+
+    bool b = false;
     while (strchr(buffer, '\n') == NULL) {
        char new[buflen];
 
@@ -30,8 +32,14 @@ char *read_line(FILE *fp) {
        //       char * p = buffer + buflen;
        for (int i = 0; i < buflen; i++) {
 	 buffer[i + buflen] = new[i];
+	 if (new[i] == '\n') {
+	   buffer[i + buflen] = '\0';
+	   b = true;
+	   break;
+	 }
        }
-       printf("%s", buffer); 
+       if (b) break;
+       //       printf("%s", buffer); 
 	 //       strncpy(p, new, buflen);
        //       buffer = fgets(buffer, buflen * 2, fp); 
        //       printf("%s", buffer);
