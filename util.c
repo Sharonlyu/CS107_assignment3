@@ -37,7 +37,7 @@ char *read_line(FILE *fp) {
        buflen *= 2;
      }
     if (strchr(buffer, '\n') == NULL) {
-      buffer[buflen] = '\0';
+      buffer[buflen - 1] = '\0';
     }
         buffer[strchr(buffer, '\n') - buffer] = '\0';
     //    printf("%s", buffer);
