@@ -43,7 +43,7 @@ char *read_line(FILE *fp) {
     }
 
     if (strchr(buffer, '\n') == NULL) {
-      buffer[strlen(buffer)- 1] = '\n';
+      buffer[strlen(buffer)- 1] = '\0';
     } else {
       buffer[strchr(buffer, '\n') - buffer] = '\0';
     }
