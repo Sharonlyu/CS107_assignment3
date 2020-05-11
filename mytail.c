@@ -54,15 +54,15 @@ void sliding_window(FILE *fp, char **window, int n) {
  * returns nothing, but prints the last n lines
 */
 void print_last_n(FILE *fp, int n) {
-    // TODO: your implementation
+   
   char *lines[MAX_NUM_LINES];
   char **window;
 
   if(n <= MAX_NUM_LINES){
     sliding_window(fp, lines, n);
-  }else{
+  } else {
     window = (char **)malloc((n * sizeof(char *)));
-    assert(window != NULL);
+    assert(window);
     sliding_window(fp, window, n);
   }
 }
