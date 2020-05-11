@@ -45,9 +45,9 @@ void print_uniq_lines(FILE *fp) {
     if (strcmp(currentLine, newLine) == 0) {
       count++;
       match = count;
-    }
+    } else {
     match = 1;
-    
+    }
     if (match > 1) {
       free(newLine);
       continue;
