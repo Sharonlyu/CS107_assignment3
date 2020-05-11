@@ -23,7 +23,7 @@ char *read_line(FILE *fp) {
     while (strchr(buffer, '\n') == NULL) {
        
        buffer = realloc(buffer, buflen * 2);
-
+       assert(buffer);
        char p[buflen];
        fgets(p, buflen, fp);
        if (p == NULL) break;
