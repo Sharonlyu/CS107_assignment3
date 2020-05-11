@@ -22,11 +22,12 @@ struct st {
  * returns true if set contains line.
  */
 
-bool contains(struct st** set, char* line, int* uniq) {
+void contains(struct st** set, char* line, int* uniq) {
   for (int i = 0; i < 100; i++) {
     struct st* st = *set + i;
     if (strcmp(st->name, line) == 0) {
-      return true;
+      st->count++;
+      return;
     }
   }
       //set = realloc(set, sizeof(set) + 100 * sizeof(struct st));
@@ -35,8 +36,6 @@ bool contains(struct st** set, char* line, int* uniq) {
   new->count = 1;
   (*uniq)++;
   set[(*uniq) + 1] = new;
-  return false;
-    
 }
 
 /*
@@ -60,23 +59,11 @@ void print_uniq_lines(FILE *fp) {
   free(line);
 
   char* newLine = NULL;
-  //  int count = 1;
 
   while ((newLine = read_line(fp))) {
-    /* the current line matches the new line*/
-    //  if (strcmp(currentLine, newLine) == 0) {
-    if (contains(&set, newLine, &uniq)) {
-      //      count++;
-      // continue;
-      //free(newLine);
-      // } else {
-      // printf("%7d %s\n", count, currentLine);
-      // memcpy(currentLine, newLine, strlen(newLine) + 1);
 
-      /*reset the count to 1 because this current line is the start again*/
-      // count = 1;
-      //free(newLine);
-    }
+    contains(&set, newLine, &uniq);
+
     //    free(newLine);
     }
   for (int i = 0; i < uniq; i++) {
