@@ -49,6 +49,7 @@ void contains(struct st** set, char* line, int* uniq) {
 void print_uniq_lines(FILE *fp) {
   struct st* set;
   set = malloc(100 * sizeof(struct st));
+
   char* line = read_line(fp);
   int uniq = 0;
   char* currentLine = malloc(strlen(line) + 1);
@@ -61,18 +62,13 @@ void print_uniq_lines(FILE *fp) {
   char* newLine = NULL;
 
   while ((newLine = read_line(fp))) {
-
     contains(&set, newLine, &uniq);
+  }
 
-    //    free(newLine);
-    }
   for (int i = 0; i < uniq; i++) {
     printf("%7d %s\n", (set + i * sizeof(struct st))->count, (set + i * sizeof(struct st))->name);
   }
 
-
-  /*  print the number with width 7 */
-  //  printf("%7d %s\n",count, currentLine);
 }
 
 
