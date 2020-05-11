@@ -22,8 +22,10 @@ char *read_line(FILE *fp) {
     while (strchr(buffer, '\n') == NULL) {
        char new[buflen];
 
-       if (fgets(new, buflen, fp) == NULL) buffer[buflen - 1 ] = '\0';
-      
+       if (fgets(new, buflen, fp) == NULL) {
+	 buffer[buflen - 1 ] = '\0';
+	 break;
+       }
        buffer = realloc(buffer, sizeof(char)* buflen*2);
        //       char * p = buffer + buflen;
        for (int i = 0; i < buflen; i++) {
