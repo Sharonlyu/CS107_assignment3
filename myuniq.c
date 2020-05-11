@@ -46,6 +46,7 @@ void print_uniq_lines(FILE *fp) {
       // free(newLine);
     }
   }
+  free(newLine);
 
   /*  print the number with width 7 */
   printf("%7d %s\n",count, currentLine);
