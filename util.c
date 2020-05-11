@@ -17,20 +17,18 @@ char *read_line(FILE *fp) {
     char *buffer = malloc(sizeof(char) * buflen );
     if (fgets(buffer, buflen, fp) == NULL) {
       return NULL;
-      //      printf("%s", buffer);   
     }
-    //buffer = realloc(buffer, sizeof(char)* buflen*2);
         
     while (strchr(buffer, '\n') == NULL) {
       //                  printf("%s", buffer);
 
-       //       printf("%lu", strlen(buffer));
        char new[buflen];
        printf("%d", buflen);
-       if (fgets(new, buflen, fp) == NULL) {
+       //       if (fgets(new, buflen, fp) == NULL) {
 	 //	 printf("%s", buffer);
-	 break;
-       }
+       //	 break;
+       // }
+       fgets(new, buflen, fp);
        buffer = realloc(buffer, sizeof(char)* buflen*2);
        //       char * p = buffer + buflen;
        for (int i = 0; i < buflen; i++) {
