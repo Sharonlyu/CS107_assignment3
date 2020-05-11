@@ -41,13 +41,18 @@ void print_uniq_lines(FILE *fp) {
       continue;
     } else {
       match = 1;
+      printf("%7d %s\n", count, currentLine);
+      memcpy(currentLine, newLine, strlen(newLine) + 1);
+
+      count = 1;
+      free(newLine);
     }
     /*
     if (match > 1) {
       free(newLine);
       continue;
     }
-    */
+    
 
     if(match == 1) {
       printf("%7d %s\n", count, currentLine);
@@ -56,6 +61,7 @@ void print_uniq_lines(FILE *fp) {
       count = 1;
       free(newLine);
     }
+    */
   }
 
 
