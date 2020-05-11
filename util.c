@@ -26,7 +26,7 @@ char *read_line(FILE *fp) {
        buffer = realloc(buffer, sizeof(char)* buflen*2);
        
        if (fgets(buffer + buflen, buflen, fp) == NULL) {
-	 printf("HI");
+
 	 break;
        }
        //       buffer = fgets(buffer, buflen * 2, fp); 
@@ -34,7 +34,7 @@ char *read_line(FILE *fp) {
        buflen *= 2;
      }
 
-    buffer[strchr(buffer, '\n') - buffer] = '\0';
+    //    buffer[strchr(buffer, '\n') - buffer] = '\0';
     //    printf("%s", buffer);
     return buffer;
 }
