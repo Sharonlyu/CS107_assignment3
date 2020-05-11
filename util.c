@@ -20,7 +20,7 @@ char *read_line(FILE *fp) {
     }
 
 
-    while (strchr(buffer, '\n') == NULL) {
+    while (true) {
        char new[buflen];
 
        if (fgets(new, buflen, fp) == NULL) {
