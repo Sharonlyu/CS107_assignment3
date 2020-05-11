@@ -36,7 +36,7 @@ void print_uniq_lines(FILE *fp) {
   while ((newLine = read_line(fp))) {
     /* the current line matches the new line*/
   if (strcmp(currentLine, newLine) == 0) {
-      printf("HAHHHAHHA");
+    //      printf("HAHHHAHHA");
       count++;
       free(newLine);
     } else {
