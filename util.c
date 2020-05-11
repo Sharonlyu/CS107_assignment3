@@ -23,7 +23,7 @@ char *read_line(FILE *fp) {
       //                  printf("%s", buffer);
 
        char new[buflen];
-       printf("%d", buflen);
+       //       printf("%d", buflen);
        //       if (fgets(new, buflen, fp) == NULL) {
 	 //	 printf("%s", buffer);
        //	 break;
