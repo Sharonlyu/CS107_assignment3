@@ -30,8 +30,10 @@ char *read_line(FILE *fp) {
        fgets(p, buflen, fp);
 
        /* if failed, stop reading further */
-       if (p == NULL) break;
-
+       if (p == NULL) {
+	 return buffer;
+	 //break;
+       }
        buffer = realloc(buffer, buflen * 2);
 
        /* assert that the buffer is not null */
