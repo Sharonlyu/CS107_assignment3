@@ -21,25 +21,18 @@ int compare(char *current, char *new, int *count){
 
 
 /*
- * Function: print_uniq_lines
- * ----------------------------
- *   Returns void, prints all unique lines using:
- *
- *          fp: user input file
- *
- *   returns: void
- *            prints the count of the same lines followed by the line
+ * Function - print_uniq_lines((FILE *fp)
+ * -------------------------------------
+ * Takes a file stream fp as an argument, and 
+ * returns nothing, but prints the number of same lines.
  */
 
-void print_uniq_lines(FILE *fp)
-{
+void print_uniq_lines(FILE *fp) {
 
   char* line = read_line(fp);
 
-  /* requests a new memory of length of the next line read from fp*/
   char* currentLine = malloc(strlen(line) + 1);
 
-  /*copies the line to allocated memory */
   memcpy(currentLine, line, strlen(line) + 1);
   free(line);
 
@@ -65,39 +58,11 @@ void print_uniq_lines(FILE *fp)
     }
   }
 
-  /* prints the count of the same lines followed by the line*/
+
   printf("%7d %s\n",count, currentLine);
 
 }
 
-/*
-void print_uniq_lines(FILE *fp) {
-    // TODO: your implementation
-  char* line = read_line(fp);
-  char* current = malloc(strlen(line) + 1);
-  
-  memcpy(current, line, strlen(line) + 1);
-  free(line);
-
-  char* newline = NULL;
-  int count = 1;
-
-  while ((newline = read_line(fp))) {
-    if (strcmp(current, newline) == 0) {
-      count++;
-      free(newline);
-      continue;
-    } else {
-      printf("%d %s\n", count, current);
-      memcpy(current, newline, strlen(newline) + 1);
-      count = 1;
-      free(newline);
-    }    
-  }
-
-  printf("%d" "%s\n",count, current);
-}
-*/
 
 // ------- DO NOT EDIT ANY CODE BELOW THIS LINE (but do add comments!)  -------
 
