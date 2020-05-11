@@ -10,14 +10,6 @@
  */
 #define ESTIMATE 100
 
-int compare(char *current, char *new, int *count){
-  if (strcmp(current, new) == 0) {
-
-    (*count)++;
-    return *count;
-  }
-  return 1;
-}
 
 
 /*
@@ -45,14 +37,17 @@ void print_uniq_lines(FILE *fp) {
     if (strcmp(currentLine, newLine) == 0) {
       count++;
       match = count;
+      free(newLine);
+      continue;
     } else {
-    match = 1;
+      match = 1;
     }
+    /*
     if (match > 1) {
       free(newLine);
       continue;
     }
-
+    */
 
     if(match == 1) {
       printf("%7d %s\n", count, currentLine);
